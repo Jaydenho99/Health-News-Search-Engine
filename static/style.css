@@ -178,6 +178,8 @@ header .top-header__left-sec .search-container {
   box-shadow: 0 0.2em 7px rgba(0, 0, 0, 0.17);
   
 }
+
+
 header .top-header__left-sec .search-container:hover {
   box-shadow: 0 0.2em 7px rgba(0, 0, 0, 0.17), 0 -0.05em 6px rgba(0, 0, 0, 0.1);
 }
@@ -193,7 +195,7 @@ header .top-header__left-sec .search-container .search-container__left-sec {
   height: 100%;
 }
 header .top-header__left-sec .search-container .search-container__left-sec #inp--searchbox {
-  width: 100%;
+  width: 520px;
   font-family: "Noto Sans", sans-serif;
   font-size: 0.95em;
   border: none;

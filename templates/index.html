@@ -19,7 +19,7 @@
 <body>
     <header>
     <div class="title">
-        <h2>Domain Specific Search Engines</h2>
+        <h2>Health Domain Specific Search Engine</h2>
     </div>
       <div class="top-header">
         <div class="top-header__left-sec">
@@ -30,19 +30,23 @@
               >
                 search
               </span>
+
+            <form method='get' action="{{url_for('home')}}">
               <input
                 type="search"
                 name="search"
                 id="inp--searchbox"
                 autocomplete="off"
-                value="codewithfaraz"
+                
               />
             </div>
 
             <div class="search-container__right-sec">
               <span class="material-icons"> close </span>
-              <span class="material-icons"> search </span>
+              <button name="search-btn" value="search_select"><span class="material-icons"> search </span></button>
             </div>
+
+          </form>
           </div>
         </div>
 
@@ -56,63 +60,32 @@
 
     <main>
       <div class="main-container">
+        <h3>Search Result: {{query}}</h3>
         <div class="search-delay">
-          About 17,000,000 results (0.35 seconds)
+          About {{num_found}} results ({{response_time}} seconds)
         </div>
+        
+        {% for result in results %}
         <div class="result-item">
           <div class="result-item-link">
-            <a href="#">https://www.codewithfaraz.com</a>
+            {% for source in result['source_id'] %}
+            <a href="#">{{source}}</a>
+            {% endfor %}
             <a href="#"><span class="material-icons-outlined dots">
                 more_vert
             </span></a>
 
           </div>
-          <h3><a href="#">Code with Faraz - Best Front-End Components and Blogs</a></h3>
+          
+          <h3><a href="{% for link in result['link'] %} {{link}} {% endfor %}">{% for title in result['title'] %}{{title}}{% endfor %}</a></h3>
+          
           <p>
-            codewithfaraz is an up-to-date collection of accessible front-end components, blogs and tutorials related to technology, programming and web development.
+
+            {{[result['description']]}}
           </p>
-          <div class="sub-result-container">
-            <div class="sub-result-item">
-              <h3><a href="#">Components</a></h3>
-              <p>Find an up-to-date collection of accessible front-end components ...</p>
-            </div>
-            <div class="sub-result-item">
-              <h3><a href="#">Blogs</a></h3>
-              <p>
-                Get Latest Blogs related to technology, programming ...
-              </p>
-            </div>
-            <div class="sub-result-item">
-              <h3><a href="#">About</a></h3>
-              <p>
-                This is Faraz Choudhary admin of codewithFaraz.com ...
-              </p>
-            </div>
-            <div class="sub-result-item">
-              <h3><a href="#">Privacy Policy</a></h3>
-              <p>
-                This Privacy Policy applies only to our online activities and is valid for
-                ...
-              </p>
-            </div>
-            <div class="sub-result-item">
-              <h3><a href="#">Contact</a></h3>
-              <p>Lets talk about everything! Whether you have a question ...</p>
-            </div>
-          </div>
+          
         </div>
-        <div class="result-item">
-          <div class="result-item-link">
-            <a href="#">https://www.codewithfaraz.com › components </a>
-            <a href="#"><span class="material-icons-outlined dots">
-              more_vert
-            </span></a>
-          </div>
-          <h3><a href="#">Latest Front-End Components - codewithFaraz</a></h3>
-          <p>
-            Find an up-to-date collection of accessible front-end components. Components are used to define custom, reusable HTML elements.
-          </p>
-        </div>
+        {% endfor %}
        
        
       </div>
