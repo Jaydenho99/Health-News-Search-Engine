@@ -463,6 +463,16 @@ main .result-item .result-item-link a {
   color: #202124;
   margin-right: 10px;
 }
+
+.result-item .description {
+  max-height: 4em; /* Set the maximum height to three lines */
+  overflow: hidden; /* Hide any overflowing content */
+  line-height: 1.2em; /* Set the line height to control the spacing between lines */
+  display: -webkit-box; /* Set the display property to create an inline block */
+  -webkit-line-clamp: 3; /* Limit the content to three lines */
+  -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+}
+
 main .result-item .result-item-link .arrow-triangle-icon.material-icons {
   color: var(--gray-i);
   position: relative;
@@ -632,3 +642,20 @@ footer .bottom-footer ul li {
     margin: 50px 0 5px 0;
     font-size: 30px;
 }
+
+.search-results{
+  text-align: center;
+  margin-left: 150px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.search-container__right-sec .search{
+  background: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-radius: none;
+}
+

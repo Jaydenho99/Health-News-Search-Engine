@@ -20,12 +20,12 @@ def home():
         
         query=request.args.get('search')
         start_time = time.time()  # Start measuring time
-        results=solr.search(query)
+        results=solr.search(query,start=0,rows=40)
         end_time = time.time()  # End measuring time
         num_found=results.hits
         response_time = round(end_time - start_time,3)  # Calculate the response time
-        
-    return render_template('index.html',query=query,results=results,num_found=num_found,response_time=response_time)
+        return render_template('index.html',query=query,results=results,num_found=num_found,response_time=response_time)
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
