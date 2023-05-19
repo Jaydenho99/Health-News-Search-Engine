@@ -602,10 +602,14 @@ footer a:hover {
 footer .top-footer-container {
   border-bottom: 1px solid;
   border-bottom: 0.5px solid rgba(200, 200, 200, 0.6);
+  
+  
 }
 footer .top-footer {
   padding: 1.6rem 0 1rem;
   padding-left: 12.5vw;
+  
+  
 }
 footer .top-footer .material-icons {
   font-size: 0.8em;
@@ -651,6 +655,14 @@ footer .bottom-footer ul li {
   margin-bottom: 20px;
 }
 
+.search-results-not-found{
+  text-align: center;
+  margin-left: 450px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .search-container__right-sec .search{
   background: none;
   box-shadow: none;
@@ -658,4 +670,29 @@ footer .bottom-footer ul li {
   border: none;
   border-radius: none;
 }
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+ 
+}
+
+.pagination-page-info {
+  font-size: 15px;
+  color: black;
+}
+
+
+
+.pagination .page-link {
+  background: white;
+  color: black;
+  font-size: 15px;
+  
+}
+
+
+
 

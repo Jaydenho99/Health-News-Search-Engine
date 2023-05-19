@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Search Engine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static\style.css" />
     <link
       rel="stylesheet"
@@ -59,10 +62,10 @@
     </header>
 
     <main>
-      {% if results %}
+      
       
       <div class="main-container">
-        
+        {% if results %}
         <h3 class="search-results"> Search Result: {{query}}</h3>
         
         <div class="search-delay">
@@ -73,7 +76,7 @@
         <div class="result-item">
           <div class="result-item-link">
             
-            <a href="{% for link in result['link'] %} {{link}} {% endfor %}"> {% for source in result['source_id'] %} {{source}}  {% endfor %}</a>
+            <a href="{{result['link']}}"> {{result['source_id']}}</a>
            
             <a href="#"><span class="material-icons-outlined dots">
                 more_vert
@@ -81,20 +84,32 @@
 
           </div>
           
-          <h3><a href="{% for link in result['link'] %} {{link}} {% endfor %}">{% for title in result['title'] %}{{title}}{% endfor %}</a></h3>
+          <h3><a href="{{result['link']}}">{{result['title']}}</a></h3>
           
           <p class="description">
-            {% for result in result['description'] %}
-            {{result}}
-            {% endfor %}
+            
+            {{result['description']}}
+            
           </p>
           
         </div>
         {% endfor %}
        
-       
+      {% else %}
+      <h3 class="search-results-not-found"> No result is found for "{{query}}" </h3>
+      {% endif %}
+
+      {% if pagination %}
+      <div class="pagination">
+        {{ pagination.info }}
+        {{ pagination.links }}
+         
       </div>
       {% endif %}
+      </div>
+
+     
+
     </main>
 
     <footer>
@@ -103,9 +118,9 @@
            &copy; 2023 <a href="#">Ho Khum Leon & Montri Srisuwan</a>. All Rights Reserved
         </div>
       </div>
-      <div class="bottom-footer">
-      </div>
+      
     </footer>
   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>
 </html>
