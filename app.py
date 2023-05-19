@@ -22,9 +22,16 @@ def home():
         
         query=request.args.get('search')
         start_time = time.time()  # Start measuring time
-        results=solr.search(query,start=0,rows=200)
+        results=solr.search(query,start=0,rows=200,**{
+        'hl': 'true',
+        'hl.fragsize': 10
+    })
+        
         end_time = time.time()  # End measuring time
 
+        # Retrieve the highlighting information
+        highlighting = results.highlighting
+        print(highlighting)
 
         per_page = 10
         page = int(request.args.get('page', 1))
@@ -38,8 +45,20 @@ def home():
         # Extract values from the Results object
         formatted_results = []
         for result in results:
+            doc_id = result['id']
+            
+            # Check if there are highlighted snippets for the title field
+            if doc_id in highlighting and 'title' in highlighting[doc_id]:
+                # Get the list of highlighted snippets for the title field
+                highlighted_snippets = highlighting[doc_id]['title']
+                # Join the snippets to form the highlighted title
+                highlighted_title = ' '.join(highlighted_snippets)
+            else:
+                highlighted_title = None
+
             formatted_result = {
                 'title': str(result['title'][0]) if 'title' in result else '',
+                'highlight_title':highlighted_title,
                 'link': str(result['link'][0]) if 'link' in result else '',
                 'description': str(result['description'][0]) if 'description' in result else '',
                 'pubDate': str(result['pubDate'][0]) if 'pubDate' in result else '',
