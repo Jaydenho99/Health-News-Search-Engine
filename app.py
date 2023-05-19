@@ -18,8 +18,8 @@ else:
 @app.route('/home', methods=["POST","GET"])
 def home():
 
-    if request.args.get('search-btn'):
-        click_btn=request.args.get('search-btn')
+    if request.args.get('search_btn'):
+        click_btn=request.args.get('search_btn')
         query=request.args.get('search')
         start_time = time.time()  # Start measuring time
         results=solr.search(query,start=0,rows=200,**{
@@ -36,7 +36,7 @@ def home():
             suggestion_list = suggestions[1]
             if suggestion_list:
                 corrected_query = suggestion_list['suggestion'][0]
-                print(corrected_query)
+                
         else:
             corrected_query = None
 

@@ -46,7 +46,7 @@
 
             <div class="search-container__right-sec">
               <span class="material-icons"> close </span>
-              <button name="search-btn" value="search_select" class="search"><span class="material-icons"> search </span></button>
+              <button name="search_btn" value="search_select" class="search"><span class="material-icons"> search </span></button>
             </div>
 
           </form>
@@ -71,7 +71,7 @@
         {% elif click_btn and not results %}
         <h3 class="search-results-not-found"> No result is found for "{{query}}" </h3>
         {% if corrected_query %}
-        <p>Did you mean {{corrected_query}} this?</p>
+        <p>Did you mean <a href="{{url_for('home',search=corrected_query,search_btn=click_btn)}}">{{corrected_query}}</a> this?</p>
         {% endif %}
         {% endif %}
         
