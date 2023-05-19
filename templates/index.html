@@ -65,9 +65,19 @@
       
       
       <div class="main-container">
-        {% if results %}
+
+        {% if click_btn and results %}
         <h3 class="search-results"> Search Result: {{query}}</h3>
+        {% elif click_btn and not results %}
+        <h3 class="search-results-not-found"> No result is found for "{{query}}" </h3>
+        {% if corrected_query %}
+        <p>Did you mean {{corrected_query}} this?</p>
+        {% endif %}
+        {% endif %}
         
+        
+
+        {% if results %}
         <div class="search-delay">
           About {{num_found}} results ({{response_time}} seconds)
         </div>
@@ -96,17 +106,15 @@
         </div>
         {% endfor %}
        
-      {% else %}
-      <h3 class="search-results-not-found"> No result is found for "{{query}}" </h3>
-      {% endif %}
+      
+        {% endif %}
 
-      {% if pagination %}
-      <div class="pagination">
-        {{ pagination.info }}
-        {{ pagination.links }}
-         
-      </div>
-      {% endif %}
+        {% if pagination %}
+        <div class="pagination">
+          {{ pagination.info }}
+          {{ pagination.links }}
+        </div>
+        {% endif %}
       </div>
 
      

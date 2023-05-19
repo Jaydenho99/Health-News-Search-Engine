@@ -19,19 +19,31 @@ else:
 def home():
 
     if request.args.get('search-btn'):
-        
+        click_btn=request.args.get('search-btn')
         query=request.args.get('search')
         start_time = time.time()  # Start measuring time
         results=solr.search(query,start=0,rows=200,**{
+        'spellcheck':'true',
+        'spellcheck.q':query,
+        'spellcheck.count':10,
         'hl': 'true',
         'hl.fragsize': 10
     })
         
-        end_time = time.time()  # End measuring time
+        spellcheck_results = results.spellcheck
+        suggestions = spellcheck_results.get('suggestions', [])
+        if suggestions:
+            suggestion_list = suggestions[1]
+            if suggestion_list:
+                corrected_query = suggestion_list['suggestion'][0]
+                print(corrected_query)
+        else:
+            corrected_query = None
 
+        end_time = time.time()  # End measuring time
+        
         # Retrieve the highlighting information
         highlighting = results.highlighting
-        print(highlighting)
 
         per_page = 10
         page = int(request.args.get('page', 1))
@@ -77,7 +89,7 @@ def home():
         
         
         response_time = round(end_time - start_time,3)  # Calculate the response time
-        return render_template('index.html',query=query,results=pagination_results ,pagination=pagination,num_found=num_found,response_time=response_time)
+        return render_template('index.html',query=query,results=pagination_results ,pagination=pagination,num_found=num_found,response_time=response_time,corrected_query=corrected_query,click_btn=click_btn)
     return render_template('index.html')
 
 
