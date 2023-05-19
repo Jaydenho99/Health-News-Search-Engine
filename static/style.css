@@ -320,7 +320,7 @@ header .bottom-header nav .active-page {
 main {
   display: flex;
   flex-direction: row;
-  width: 85%;
+  width: 100%;
   max-width: 1920px;
   font-family: "Roboto", sans-serif;
   padding: 1rem 10vw 3rem 12.5vw;
@@ -649,7 +649,6 @@ footer .bottom-footer ul li {
 
 .search-results{
   text-align: center;
-  margin-left: 150px;
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -657,7 +656,6 @@ footer .bottom-footer ul li {
 
 .search-results-not-found{
   text-align: center;
-  margin-left: 450px;
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -691,6 +689,12 @@ footer .bottom-footer ul li {
   color: black;
   font-size: 15px;
   
+}
+
+.main-container{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 

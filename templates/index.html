@@ -70,9 +70,10 @@
         <h3 class="search-results"> Search Result: {{query}}</h3>
         {% elif click_btn and not results %}
         <h3 class="search-results-not-found"> No result is found for "{{query}}" </h3>
-        {% if corrected_query %}
-        <p>Did you mean <a href="{{url_for('home',search=corrected_query,search_btn=click_btn)}}">{{corrected_query}}</a> this?</p>
         {% endif %}
+
+        {% if corrected_query and query != corrected_query %}
+        <p>Did you mean <a href="{{url_for('home',search=corrected_query,search_btn=click_btn)}}">{{corrected_query}}</a> this?</p>
         {% endif %}
         
         

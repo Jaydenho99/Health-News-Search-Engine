@@ -26,16 +26,17 @@ def home():
         'spellcheck':'true',
         'spellcheck.q':query,
         'spellcheck.count':10,
+        'spellcheck.collate':'true',
         'hl': 'true',
         'hl.fragsize': 10
     })
         
         spellcheck_results = results.spellcheck
-        suggestions = spellcheck_results.get('suggestions', [])
+        print(spellcheck_results)
+        suggestions = spellcheck_results.get('collations', [])
         if suggestions:
-            suggestion_list = suggestions[1]
-            if suggestion_list:
-                corrected_query = suggestion_list['suggestion'][0]
+            corrected_query=suggestions[1]
+            print(corrected_query)
                 
         else:
             corrected_query = None
