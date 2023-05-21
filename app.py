@@ -4,6 +4,7 @@ import simplejson
 import pysolr
 import time
 from flask_paginate import Pagination, get_page_args
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -14,6 +15,9 @@ if(solr):
 else:
     print("Failed to connect to SoLR")
 
+@app.template_filter('format_datetime')
+def format_datetime(value, format='%d %b %Y'):
+    return datetime.strptime(value, '%d/%m/%Y %H:%M').strftime(format)
 
 @app.route('/home', methods=["POST","GET"])
 def home():

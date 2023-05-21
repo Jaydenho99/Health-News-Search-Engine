@@ -97,6 +97,24 @@
           
           <h3><a href="{{result['link']}}">{{result['title']}}</a></h3>
           <p>Highlighted Words: <strong>{{result['highlight_title']|safe}}</strong></p>
+
+          <div class="date-time">
+            <div>
+              <ion-icon name="calendar"></ion-icon>
+              <time datetime="PT137M">{{result['pubDate']| format_datetime('%d %b %Y')}}</time>
+            </div>
+
+            <div>
+              <ion-icon name="time"></ion-icon>
+              <time datetime="PT137M">{{result['pubDate']| format_datetime('%H:%M')}}</time>
+            </div>
+
+            <div>
+              <ion-icon name="home"></ion-icon>
+              <data>{{result['country']|capitalize}}</data>
+          </div>
+        </div>
+
           
           <p class="description">
             
@@ -130,7 +148,10 @@
       </div>
       
     </footer>
-  
+    <!--ionicons-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>
 </html>
