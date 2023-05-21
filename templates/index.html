@@ -68,6 +68,26 @@
 
         {% if click_btn and results %}
         <h3 class="search-results"> Search Result: {{query}}</h3>
+        <h3>Facets Field:
+          <ul>
+            {% for i in range(0, facets|length, 2) %}
+              {% set facet = facets[i] %}
+              {% set count = facets[i+1] %}
+              {% if loop.index > 1 %},{% endif %}
+              <a href="{{url_for('home',search=query ~ ' ' ~ facet,search_btn=click_btn)}}">{{ facet }}</a>({{ count }})
+            {% endfor %}
+          </ul>
+          <ul>
+            {% for i in range(0, facets_country|length, 2) %}
+              {% set facet_country = facets_country[i] %}
+              {% set count_facet = facets_country[i+1] %}
+              {% if loop.index > 1 %},{% endif %}
+              <a href="{{url_for('home',search=query ~ ' ' ~ facet_country,search_btn=click_btn)}}">{{ facet_country }}</a>({{ count_facet }})
+             
+            {% endfor %}
+          </ul>
+          
+        </h3>
         {% elif click_btn and not results %}
         <h3 class="search-results-not-found"> No result is found for "{{query}}" </h3>
         {% endif %}

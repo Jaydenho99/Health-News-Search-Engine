@@ -32,16 +32,26 @@ def home():
         'spellcheck.count':10,
         'spellcheck.collate':'true',
         'hl': 'true',
-        'hl.fragsize': 10
+        'hl.fragsize': 10,
+        'facet':'true',
+        'facet.field':['source_id','country'],
+        'facet.limit':10,
+        'facet.sort':'count'
     })
         
+
+        # Facet search
+
+        facets=results.facets['facet_fields']['source_id']
+        facets_country=results.facets['facet_fields']['country']
+
+
+
+        # Spell check
         spellcheck_results = results.spellcheck
-        print(spellcheck_results)
         suggestions = spellcheck_results.get('collations', [])
         if suggestions:
-            corrected_query=suggestions[1]
-            print(corrected_query)
-                
+            corrected_query=suggestions[1]     
         else:
             corrected_query = None
 
@@ -94,7 +104,7 @@ def home():
         
         
         response_time = round(end_time - start_time,3)  # Calculate the response time
-        return render_template('index.html',query=query,results=pagination_results ,pagination=pagination,num_found=num_found,response_time=response_time,corrected_query=corrected_query,click_btn=click_btn)
+        return render_template('index.html',query=query,results=pagination_results ,pagination=pagination,num_found=num_found,response_time=response_time,corrected_query=corrected_query,click_btn=click_btn,facets=facets,facets_country=facets_country)
     return render_template('index.html')
 
 
