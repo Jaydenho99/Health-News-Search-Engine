@@ -45,7 +45,7 @@
             </div>
 
             <div class="search-container__right-sec">
-              <span class="material-icons"> close </span>
+              <span class="material-icons" id="reset-icon"> close </span>
               <button name="search_btn" value="search_select" class="search"><span class="material-icons"> search </span></button>
             </div>
 
@@ -70,6 +70,7 @@
         <h3 class="search-results"> Search Result: {{query}}</h3>
         <h3>Facets Field:
           <ul>
+            News Sources:
             {% for i in range(0, facets|length, 2) %}
               {% set facet = facets[i] %}
               {% set count = facets[i+1] %}
@@ -78,6 +79,7 @@
             {% endfor %}
           </ul>
           <ul>
+            Country:
             {% for i in range(0, facets_country|length, 2) %}
               {% set facet_country = facets_country[i] %}
               {% set count_facet = facets_country[i+1] %}
@@ -168,6 +170,21 @@
       </div>
       
     </footer>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get the reset icon element
+        var resetIcon = document.getElementById('reset-icon');
+      
+        // Add a click event listener to the reset icon
+        resetIcon.addEventListener('click', function() {
+          // Reload the page to reset it to the default state
+          window.location.href='/home';
+        });
+      });
+    </script>
+      
     <!--ionicons-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
