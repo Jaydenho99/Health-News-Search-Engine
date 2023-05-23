@@ -26,7 +26,7 @@ def home():
         click_btn=request.args.get('search_btn')
         query=request.args.get('search')
         start_time = time.time()  # Start measuring time
-        results=solr.search(query,start=0,rows=200,**{
+        results=solr.search(query,start=0,rows=200,fl='*,score', fq='{!frange l= 1.0}query($q,0)',**{
         'spellcheck':'true',
         'spellcheck.q':query,
         'spellcheck.count':10,
@@ -36,10 +36,14 @@ def home():
         'facet':'true',
         'facet.field':['source_id','country'],
         'facet.limit':10,
-        'facet.sort':'count'
+        'facet.sort':'count',
+        'rq': '{!rerank reRankQuery=$rqq reRankDocs=100}',
+        'rqq':'(title:covid)^2 OR (title:cardiovascular)^2 OR (title:heart disease) OR (title:mental health) OR (description:covid)^1.5 OR (description:cardiovascular)^1.5 OR (description:heart disease)^1.5 OR (description:emntal health)^1.5'
+        
     })
         
-
+        for i in results:
+            print(i['score'])
         # Facet search
 
         facets=results.facets['facet_fields']['source_id']
@@ -90,7 +94,8 @@ def home():
                 'description': str(result['description'][0]) if 'description' in result else '',
                 'pubDate': str(result['pubDate'][0]) if 'pubDate' in result else '',
                 'source_id': str(result['source_id'][0]) if 'source_id' in result else '',
-                'country': str(result['country'][0]) if 'country' in result else ''
+                'country': str(result['country'][0]) if 'country' in result else '',
+                'score': result['score']
             }
             formatted_results.append(formatted_result)
 

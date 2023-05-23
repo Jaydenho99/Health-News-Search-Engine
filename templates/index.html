@@ -68,6 +68,7 @@
 
         {% if click_btn and results %}
         <h3 class="search-results"> Search Result: {{query}}</h3>
+        <!--
         <h3>Facets Field:
           <ul>
             News Sources:
@@ -88,7 +89,7 @@
              
             {% endfor %}
           </ul>
-          
+          -->
         </h3>
         {% elif click_btn and not results %}
         <h3 class="search-results-not-found"> No result is found for "{{query}}" </h3>
@@ -121,6 +122,11 @@
           <p>Highlighted Words: <strong>{{result['highlight_title']|safe}}</strong></p>
 
           <div class="date-time">
+            <div>
+              <ion-icon name="trending-up"></ion-icon>
+              <data>{{result['score']|round(2)}}</data>
+            </div>
+
             <div>
               <ion-icon name="calendar"></ion-icon>
               <time datetime="PT137M">{{result['pubDate']| format_datetime('%d %b %Y')}}</time>
