@@ -42,10 +42,7 @@ def home():
         
     })
         
-        for i in results:
-            print(i['score'])
         # Facet search
-
         facets=results.facets['facet_fields']['source_id']
         facets_country=results.facets['facet_fields']['country']
 
