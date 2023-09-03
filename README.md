@@ -34,3 +34,18 @@ Description of relevant results: Relevant results should contain relevant news a
 
 5. Re-rank querying
    Improve the search results by enhancing the relevance and ordering of the search results based on specific criteria. In this search engine, the presence of the terms “covid”, “mental health”, “cardiovascular”, and “heart disease” in both the title and description fields are identified as the key relevance feature in the re-rank querying process.
+
+## Interface
+
+Query Output
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/e0dd1447-c453-4f53-bcac-bcfe2f29447d)
+
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/699f2fe0-9ea8-4cb2-ae7a-0a57e6531dcd)
+
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/9ba2ea13-78ff-41cc-aa7d-06415a475ad1)
+
+Spell Checker
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/ef28763e-ac96-4707-b8ab-ae6d5bb499b6)
+
+
+
