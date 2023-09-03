@@ -38,14 +38,15 @@ Description of relevant results: Relevant results should contain relevant news a
 ## Interface
 
 Query Output
-![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/e0dd1447-c453-4f53-bcac-bcfe2f29447d)
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/2d948b02-b06d-4ab9-9d0c-05f58667f639)
 
-![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/699f2fe0-9ea8-4cb2-ae7a-0a57e6531dcd)
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/2aa0364e-84c2-478f-afd1-7e6174f64f46)
 
-![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/9ba2ea13-78ff-41cc-aa7d-06415a475ad1)
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/4064e41d-1501-4f87-9c83-d74694a30a97)
 
 Spell Checker
-![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/ef28763e-ac96-4707-b8ab-ae6d5bb499b6)
+![image](https://github.com/Jaydenho99/Health-News-Search-Engine/assets/77521676/caaf26f5-f079-4b66-93d3-f9843e221fe0)
+
 
 
 
